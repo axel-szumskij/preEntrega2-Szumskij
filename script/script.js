@@ -38,7 +38,7 @@ let lista_productos = [];
 
 for(let i=0 ; i < 3 ; i++){
   let nombre = prompt ("Ingrese el nombre del producto");
-  let precio = prompt("Ingrese el precio del producto");
+  let precio = parseFloat(prompt("Ingrese el precio del producto"));
   let stock = prompt("Ingrese el stock del producto");
   let producto = new Producto( nombre, precio, stock);
 
@@ -59,14 +59,13 @@ let resultado_find = lista_productos.find(buscar_producto);
 if( resultado_find != undefined ){
   if( resultado_find.get_stock()){
 
-    let unidades = prompt("Cuantos productos desea comprar?");
+    let unidades = parseFloat(prompt("Cuantos productos desea comprar?"));
     resultado_find.update_stock(unidades);
   }
   else{
     console.log("Sin stock");
   }
 }
-
 
 console.log(resultado_find);
 

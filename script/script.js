@@ -9,7 +9,7 @@ class Producto{
   get_datos(){
     console.log("<----DATOS----->")
     console.log("Nombre: " , this.nombre);
-    console.log("Precio: " , this.precio);
+    console.log("Nombre: " , this.precio);
     console.log("");
   }
 
@@ -31,11 +31,6 @@ class Producto{
 function buscar_producto( producto){
   return producto.nombre == compra_usario;
 }
-
-/*cargar productos*/
-
-let lista_productos = [];
-
 function start(){
   for(let i=0 ; i < 3 ; i++){
     let nombre = prompt ("Ingrese el nombre del producto");
@@ -48,8 +43,18 @@ function start(){
   unidades()
 }
 
+/*cargar productos*/
 
+let lista_productos = [];
 
+for(let i=0 ; i < 3 ; i++){
+  let nombre = prompt ("Ingrese el nombre del producto");
+  let precio = parseFloat(prompt("Ingrese el precio del producto"));
+  let stock = prompt("Ingrese el stock del producto");
+  let producto = new Producto( nombre, precio, stock);
+
+  lista_productos.push(producto);
+}
 
 console.log(lista_productos);
 
@@ -59,26 +64,21 @@ for(let producto of lista_productos){
 }
 
 /*simulo compras*/
-function unidades(){
-  compra_usuario = prompt("Ingrese el nombre del producto que desea comprar")
-  unidades = prompt("Cuantos productos desea comprar?");
-  
-  if (compra_usuario == lista_productos[0].nombre){
-    console.log( "estas a punto de comprar " + unidades + " copias de " + lista_productos[0].nombre + " a $" + lista_productos[0].precio + " por un valor total de $" + lista_productos[0].precio * unidades)
-  }
-  if (compra_usuario == lista_productos[1].nombre){
-    console.log("undefined")
-  }
-   if (compra_usuario == lista_productos[2].nombre){
-    console.log("undefined")
-  }
-  else{
-    console.log("este producto no esta disponible")
-  }
-}
+let compra_usario = prompt("Ingrese el nombre del producto que desea comprar")
 let resultado_find = lista_productos.find(buscar_producto);
 
-start()
+if( resultado_find != undefined ){
+  if( resultado_find.get_stock()){
+
+    let unidades = parseFloat(prompt("Cuantos productos desea comprar?"));
+    resultado_find.update_stock(unidades);
+  }
+  else{
+    console.log("Sin stock");
+  }
+}
+
+console.log(resultado_find);
 
 
 

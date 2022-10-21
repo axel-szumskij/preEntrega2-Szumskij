@@ -64,21 +64,31 @@ function unidades(){
   unidades = prompt("Cuantos productos desea comprar?");
   
   if (compra_usuario == lista_productos[0].nombre){
-    console.log( "estas a punto de comprar " + unidades + " copias de " + lista_productos[0].nombre + " a $" + lista_productos[0].precio + " por un valor total de $" + lista_productos[0].precio * unidades)
+    alert( "estas a punto de comprar " + unidades + " copias de " + lista_productos[0].nombre + " a $" + lista_productos[0].precio + " por un valor total de $" + lista_productos[0].precio * unidades)
   }
   if (compra_usuario == lista_productos[1].nombre){
-    console.log("undefined")
+    alert("chau")
   }
    if (compra_usuario == lista_productos[2].nombre){
-    console.log("undefined")
+    alert("quetal")
   }
   else{
-    console.log("este producto no esta disponible")
+    alert("no vendemos ese")
   }
 }
+
+
+
+
+
+
 let resultado_find = lista_productos.find(buscar_producto);
 
+
+
+
+
+
+
+
 start()
-
-
-
